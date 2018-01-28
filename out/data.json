@@ -1,0 +1,387 @@
+{
+    "project": {},
+    "files": {
+        "galinha.js": {
+            "name": "galinha.js",
+            "modules": {},
+            "classes": {
+                "Galinha": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "genetico.js": {
+            "name": "genetico.js",
+            "modules": {},
+            "classes": {
+                "Genetico": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "raposa.js": {
+            "name": "raposa.js",
+            "modules": {},
+            "classes": {
+                "Raposa": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Galinha": {
+            "name": "Galinha",
+            "shortname": "Galinha",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "galinha.js",
+            "line": 2,
+            "description": "Essa é a classe de abstração do objeto \"Galinha\"",
+            "is_constructor": 1
+        },
+        "Genetico": {
+            "name": "Genetico",
+            "shortname": "Genetico",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "genetico.js",
+            "line": 1,
+            "description": "Essa classe é onde está implemetada a lógica do algoritmo genético",
+            "is_constructor": 1
+        },
+        "Raposa": {
+            "name": "Raposa",
+            "shortname": "Raposa",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "raposa.js",
+            "line": 1,
+            "description": "Essa é a classe de abstração do objeto \"Raposa\"",
+            "is_constructor": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "galinha.js",
+            "line": 12,
+            "description": "Esse é o Método construtor da classe",
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "contexto 2d do canvas html5",
+                    "type": "Object"
+                },
+                {
+                    "name": "position",
+                    "description": "posição inicial da galinha x e y",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "x",
+                            "description": "posição x",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "posição y",
+                            "type": "Number"
+                        }
+                    ]
+                },
+                {
+                    "name": "positions",
+                    "description": "lista de posições na qual a galinha terá que andar: l - left; r - right; u - up; d - down. Ex.: [\"d\",\"d\",\"l\",\"r\",\"u\"]",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Retorna o próprio objeto",
+                "type": "Any"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "galinha.js",
+            "line": 36,
+            "description": "Desenha a \"galinha\" na tela",
+            "itemtype": "method",
+            "name": "draw",
+            "return": {
+                "description": "sem retorno",
+                "type": "Any"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "galinha.js",
+            "line": 48,
+            "description": "Método que controla o movimento da \"galinha\"",
+            "itemtype": "method",
+            "name": "translate",
+            "params": [
+                {
+                    "name": "speed",
+                    "description": "velocidade",
+                    "type": "Number"
+                },
+                {
+                    "name": "i",
+                    "description": "posição que representa a fatia de tempo de vida da galinha",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "galinha.js",
+            "line": 83,
+            "description": "Método que verifica se a galinha está colidindo com alguma raposa",
+            "itemtype": "method",
+            "name": "collisions",
+            "params": [
+                {
+                    "name": "raposas",
+                    "description": "objeto que contem as posições de todas as raposas",
+                    "type": "Object"
+                },
+                {
+                    "name": "i",
+                    "description": "posição que representa a fatia de tempo de vida da galinha",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "rotorna true se colidir, false se não colidir",
+                "type": "Boolean"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "galinha.js",
+            "line": 102,
+            "description": "Método de carregamento para caracterirar a morte da galinha",
+            "itemtype": "method",
+            "name": "deadLoad",
+            "params": [
+                {
+                    "name": "i",
+                    "description": "posição que representa a fatia de tempo de vida da galinha",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "sem retorno",
+                "type": "Any"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "galinha.js",
+            "line": 117,
+            "description": "Método que verifica se a galinha está colidindo com alguma raposa em específico",
+            "itemtype": "method",
+            "name": "collision",
+            "params": [
+                {
+                    "name": "positionRaposa",
+                    "description": "objeto que contem a posição x e y de uma determinada raposa",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "x",
+                            "description": "posição x da raposa",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "y",
+                            "description": "posição y da raposa",
+                            "type": "Number"
+                        }
+                    ]
+                },
+                {
+                    "name": "i",
+                    "description": "posição que representa a fatia de tempo de vida da galinha",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "rotorna true se colidir, false se não colidir",
+                "type": "Boolean"
+            },
+            "class": "Galinha"
+        },
+        {
+            "file": "genetico.js",
+            "line": 10,
+            "description": "Esse é o Método construtor da classe",
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "contexto 2d do canvas html5",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Retorna o próprio objeto",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 27,
+            "description": "Método que inicia a população de galinhas",
+            "itemtype": "method",
+            "name": "init",
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 45,
+            "description": "Método que inicia o ciclo de vida das galinhas",
+            "itemtype": "method",
+            "name": "play",
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 58,
+            "description": "Método que controla o loop de interações e a condição de parada",
+            "itemtype": "method",
+            "name": "loop",
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 91,
+            "description": "Método que separa os indivíduos mais qualificados para o cruzamento",
+            "itemtype": "method",
+            "name": "crossing",
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 109,
+            "description": "Método que faz a preparação do cruzamento dos indivíduos mais qualificados",
+            "itemtype": "method",
+            "name": "auxCrossing",
+            "params": [
+                {
+                    "name": "novasGalinhas",
+                    "description": "lista das galinhas(indivíduos) mais qualificadas para o cruzamento",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "genetico.js",
+            "line": 128,
+            "description": "Método que recebe duas galinhas e faz o cruzamento das mesmas.",
+            "itemtype": "method",
+            "name": "auxCrossing",
+            "params": [
+                {
+                    "name": "galinha1",
+                    "description": "galinha 1",
+                    "type": "Object"
+                },
+                {
+                    "name": "galinha2",
+                    "description": "galinha 2",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Sem retorno",
+                "type": "Any"
+            },
+            "class": "Genetico"
+        },
+        {
+            "file": "raposa.js",
+            "line": 9,
+            "description": "Esse é o Método construtor da classe",
+            "itemtype": "method",
+            "name": "constructor",
+            "params": [
+                {
+                    "name": "ctx",
+                    "description": "contexto 2d do canvas html5",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Retorna o próprio objeto",
+                "type": "Any"
+            },
+            "class": "Raposa"
+        },
+        {
+            "file": "raposa.js",
+            "line": 38,
+            "description": "Desenha todas as \"Raposas\" na tela",
+            "itemtype": "method",
+            "name": "draw",
+            "return": {
+                "description": "sem retorno",
+                "type": "Any"
+            },
+            "class": "Raposa"
+        },
+        {
+            "file": "raposa.js",
+            "line": 52,
+            "description": "Método que retorno todas as posições das raposas",
+            "itemtype": "method",
+            "name": "getPositions",
+            "return": {
+                "description": "retorno todas as posições de 0..n, onde cada index é composto por um objeto no formato {x:number,y:number}",
+                "type": "Array"
+            },
+            "class": "Raposa"
+        }
+    ],
+    "warnings": []
+}

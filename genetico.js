@@ -1,4 +1,19 @@
+/**
+* Essa classe é onde está implemetada a lógica do algoritmo genético
+*
+* @class Genetico
+* @constructor
+*/
+
 class Genetico{
+
+    /**
+    * Esse é o Método construtor da classe 
+    *
+    * @method constructor
+    * @param {Object} ctx contexto 2d do canvas html5
+    * @return {any} Retorna o próprio objeto
+    */
 
     constructor(ctx){
         this.i=0;
@@ -7,6 +22,14 @@ class Genetico{
         this.raposas = new Raposa(ctx);
         this.init();
     }
+
+
+    /**
+    * Método que inicia a população de galinhas
+    *
+    * @method init
+    * @return {any} Sem retorno
+    */
 
     init(){
         var possible = "lrdu";
@@ -18,11 +41,26 @@ class Genetico{
             this.populacaoGalinha.push(new Galinha(this.ctx,{"x":200,"y":200},positions));
         }
     }
+
+    /**
+    * Método que inicia o ciclo de vida das galinhas
+    *
+    * @method play
+    * @return {any} Sem retorno
+    */
    
     play(){
         this.i=0;
         this.loop();
     }
+
+
+    /**
+    * Método que controla o loop de interações e a condição de parada 
+    *
+    * @method loop
+    * @return {any} Sem retorno
+    */
 
     loop(){
         var self = this;
@@ -49,22 +87,32 @@ class Genetico{
         },1000);
     }
 
+
+    /**
+    * Método que separa os indivíduos mais qualificados para o cruzamento
+    *
+    * @method crossing
+    * @return {any} Sem retorno
+    */
+
     crossing(){
         this.populacaoGalinha = this.populacaoGalinha.sort(function(a,b) {
             return a.morteI > b.morteI ? -1 : a.morteI < b.morteI ? 1 : 0;
         });
         var novasGalinhas = [];
         for(var i=0;i<10;i++){
-
-            // this.populacaoGalinha[i].cor    = "#FF0000"; 
-            // this.populacaoGalinha[i].morteI = 20;
-            // this.populacaoGalinha[i].morte  = false;
-
             novasGalinhas.push(this.populacaoGalinha[i]);
         }
         this.auxCrossing(novasGalinhas);
     }
 
+    /**
+    * Método que faz a preparação do cruzamento dos indivíduos mais qualificados
+    *
+    * @method auxCrossing
+    * @param {Array} novasGalinhas lista das galinhas(indivíduos) mais qualificadas para o cruzamento 
+    * @return {any} Sem retorno
+    */
 
     auxCrossing(novasGalinhas){
         this.populacaoGalinha=[];
@@ -76,6 +124,15 @@ class Genetico{
         this.play();
     }
 
+
+    /**
+    * Método que recebe duas galinhas e faz o cruzamento das mesmas.
+    *
+    * @method auxCrossing
+    * @param {Object} galinha1 galinha 1 
+    * @param {Object} galinha2 galinha 2
+    * @return {any} Sem retorno
+    */
 
     joinCrossing(galinha1,galinha2){
         

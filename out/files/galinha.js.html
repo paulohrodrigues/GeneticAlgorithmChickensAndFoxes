@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>galinha.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/Galinha.html">Galinha</a></li>
+                                <li><a href="../classes/Genetico.html">Genetico</a></li>
+                                <li><a href="../classes/Raposa.html">Raposa</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: galinha.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+/**
+* Essa é a classe de abstração do objeto &quot;Galinha&quot;
+*
+* @class Galinha
+* @constructor
+*/
+
+class Galinha{
+    
+    
+    /**
+    * Esse é o Método construtor da classe 
+    *
+    * @method constructor
+    * @param {Object} ctx contexto 2d do canvas html5
+    * @param {Object} position posição inicial da galinha x e y
+    * @param {number} position.x posição x
+    * @param {number} position.y posição y
+    * @param {Array} positions lista de posições na qual a galinha terá que andar: l - left; r - right; u - up; d - down. Ex.: [&quot;d&quot;,&quot;d&quot;,&quot;l&quot;,&quot;r&quot;,&quot;u&quot;]
+    * @return {any} Retorna o próprio objeto
+    */
+    
+    constructor(ctx,position,positions){
+        this.cor        = &quot;#FF0000&quot;;  
+        this.deadI     = 20;
+        this.dead      = false;
+        this.ctx        = ctx;
+        this.positions  = positions;
+        this.position   = position;
+        this.draw();
+    }
+
+
+
+    /**
+    * Desenha a &quot;galinha&quot; na tela
+    *
+    * @method draw
+    * @return {any} sem retorno
+    */
+
+    draw(){
+        this.ctx.fillStyle=this.cor;
+        this.ctx.fillRect(this.position.x,this.position.y,25,25);
+    }
+
+    /**
+    * Método que controla o movimento da &quot;galinha&quot; 
+    *
+    * @method translate
+    * @param {number} speed velocidade 
+    * @param {number} i posição que representa a fatia de tempo de vida da galinha
+    * @return {any} Sem retorno
+    */
+
+    translate(speed,i){
+        if(this.dead==true){
+            console.log(&quot;morto&quot;);
+        }else{
+            switch(this.positions[i]){
+                case &quot;l&quot;:{
+                    this.position.x-=speed;
+                    break;
+                }
+                case &quot;r&quot;:{
+                    this.position.x+=speed;
+                    break;
+                }
+                case &quot;u&quot;:{
+                    this.position.y-=speed;
+                    break;
+                }
+                case &quot;d&quot;:{
+                    this.position.y+=speed;
+                    break;
+                }
+            }
+        }
+        this.draw();
+    }
+
+    /**
+    * Método que verifica se a galinha está colidindo com alguma raposa 
+    *
+    * @method collisions
+    * @param {Object} raposas objeto que contem as posições de todas as raposas
+    * @param {number} i posição que representa a fatia de tempo de vida da galinha
+    * @return {Boolean} rotorna true se colidir, false se não colidir
+    */
+
+    collisions(raposas,i){
+        var positionsRaposas = raposas.getPositions();
+        for(var positionRaposa of positionsRaposas){
+            if(this.collision(positionRaposa,i)==true){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+    * Método de carregamento para caracterirar a morte da galinha 
+    *
+    * @method deadLoad
+    * @param {number} i posição que representa a fatia de tempo de vida da galinha
+    * @return {any} sem retorno
+    */
+
+    deadLoad(i){
+        this.deadI = i;
+        this.dead  = true;
+        this.cor    = &quot;#00FF00&quot;;
+    }
+
+
+    /**
+    * Método que verifica se a galinha está colidindo com alguma raposa em específico
+    *
+    * @method collision
+    * @param {Object} positionRaposa objeto que contem a posição x e y de uma determinada raposa
+    * @param {number} positionRaposa.x posição x da raposa
+    * @param {number} positionRaposa.y posição y da raposa
+    * @param {number} i posição que representa a fatia de tempo de vida da galinha
+    * @return {Boolean} rotorna true se colidir, false se não colidir
+    */
+
+    collision(positionRaposa,i){
+        if(this.dead==false){
+            var tamanho = 25;
+
+            if(this.position.x+tamanho &lt; 1){ this.deadLoad(i); return true; }
+            if(this.position.x        &gt;500){ this.deadLoad(i); return true; }
+            if(this.position.y+tamanho &lt; 1){ this.deadLoad(i); return true; }
+            if(this.position.y        &gt;500){ this.deadLoad(i); return true; }
+
+
+            if(positionRaposa.x + tamanho &lt;= this.position.x){ return false; }
+            if(positionRaposa.x   &gt;= this.position.x+tamanho){ return false; }
+            if(positionRaposa.y+tamanho   &lt;= this.position.y){ return false; }
+            if(positionRaposa.y   &gt;= this.position.y+tamanho){ return false; }
+
+            this.deadLoad(i);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+}
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

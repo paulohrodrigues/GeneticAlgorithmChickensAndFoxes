@@ -1,4 +1,19 @@
+/**
+* Essa é a classe de abstração do objeto "Raposa"
+*
+* @class Raposa
+* @constructor
+*/
 class Raposa{
+
+    /**
+    * Esse é o Método construtor da classe 
+    *
+    * @method constructor
+    * @param {Object} ctx contexto 2d do canvas html5
+    * @return {any} Retorna o próprio objeto
+    */
+
     constructor(ctx){
         this.ctx=ctx;
 
@@ -19,6 +34,14 @@ class Raposa{
         ];
     }
 
+
+    /**
+    * Desenha todas as "Raposas" na tela
+    *
+    * @method draw
+    * @return {any} sem retorno
+    */
+
     draw(){
         for(var raposa of this.positions){
             this.ctx.fillStyle="#000000";
@@ -26,6 +49,12 @@ class Raposa{
         }
     }
 
+    /**
+    * Método que retorno todas as posições das raposas
+    *
+    * @method getPositions
+    * @return {Array} retorno todas as posições de 0..n, onde cada index é composto por um objeto no formato {x:number,y:number}
+    */
     getPositions(){
         return this.positions;
     }
