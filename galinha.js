@@ -2,8 +2,8 @@ class Galinha{
     
     constructor(ctx,position,positions){
         this.cor        = "#FF0000";  
-        this.morteI     = 20;
-        this.morte      = false;
+        this.deadI     = 20;
+        this.dead      = false;
         this.ctx        = ctx;
         this.positions  = positions;
         this.position   = position;
@@ -16,7 +16,7 @@ class Galinha{
     }
 
     translate(speed,i){
-        if(this.morte==true){
+        if(this.dead==true){
             console.log("morto");
             // return 0;
         }else{
@@ -52,21 +52,21 @@ class Galinha{
         return false;
     }
 
-    morteLoad(i){
-        this.morteI = i;
-        this.morte  = true;
+    deadLoad(i){
+        this.deadI = i;
+        this.dead  = true;
         this.cor    = "#00FF00";
     }
 
 
     collision(positionRaposa,i){
-        if(this.morte==false){
+        if(this.dead==false){
             var tamanho = 25;
 
-            if(this.position.x+tamanho < 1){ this.morteLoad(i); return true; }
-            if(this.position.x        >500){ this.morteLoad(i); return true; }
-            if(this.position.y+tamanho < 1){ this.morteLoad(i); return true; }
-            if(this.position.y        >500){ this.morteLoad(i); return true; }
+            if(this.position.x+tamanho < 1){ this.deadLoad(i); return true; }
+            if(this.position.x        >500){ this.deadLoad(i); return true; }
+            if(this.position.y+tamanho < 1){ this.deadLoad(i); return true; }
+            if(this.position.y        >500){ this.deadLoad(i); return true; }
 
 
             if(positionRaposa.x + tamanho <= this.position.x){ return false; }
@@ -74,7 +74,7 @@ class Galinha{
             if(positionRaposa.y+tamanho   <= this.position.y){ return false; }
             if(positionRaposa.y   >= this.position.y+tamanho){ return false; }
 
-            this.morteLoad(i);
+            this.deadLoad(i);
             return true;
         }else{
             return false;
