@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Genetico</title>
+</head>
+<body>
+    <canvas id="canvas" height="500" width="500"></canvas>
+    <script>
+        
+        var canvas = document.getElementById("canvas");
+        var ctx    = canvas.getContext("2d");
+
+    
+        onload=()=>{
+            var g = new Genetico(ctx);
+            g.play();        
+        }
+
+    </script>
+    <script src="./galinha.js"></script>
+    <script src="./genetico.js"></script>
+    <script src="./raposa.js"></script>
+</body>
+</html>
