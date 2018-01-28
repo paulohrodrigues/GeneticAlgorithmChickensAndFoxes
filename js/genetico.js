@@ -33,12 +33,12 @@ class Genetico{
 
     init(){
         var possible = "lrdu";
-        for(let i =0;i<20;i++){
+        for(let i =0;i<100;i++){
             var positions = [];
             for(let j =0;j<20;j++){
                 positions.push(possible[Math.floor((Math.random() * 4))]);
             }
-            this.populacaoGalinha.push(new Galinha(this.ctx,{"x":200,"y":200},positions));
+            this.populacaoGalinha.push(new Galinha(this.ctx,{"x":250,"y":250},positions));
         }
     }
 
@@ -144,7 +144,7 @@ class Genetico{
             positions.push(galinha2.positions[j]);
         }
 
-        this.populacaoGalinha.push(new Galinha(this.ctx,{"x":200,"y":200},positions));
+        this.populacaoGalinha.push(new Galinha(this.ctx,{"x":250,"y":250},positions));
     }
 
 }
