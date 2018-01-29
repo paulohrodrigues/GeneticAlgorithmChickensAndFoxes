@@ -33,7 +33,7 @@ class Genetico{
 
     init(){
         var possible = "lrdu";
-        for(let i =0;i<100;i++){
+        for(let i =0;i<20;i++){
             var positions = [];
             for(let j =0;j<20;j++){
                 positions.push(possible[Math.floor((Math.random() * 4))]);
@@ -84,7 +84,7 @@ class Genetico{
                 self.loop();  
             }
             
-        },1000);
+        },300);
     }
 
 
@@ -100,8 +100,15 @@ class Genetico{
             return a.morteI > b.morteI ? -1 : a.morteI < b.morteI ? 1 : 0;
         });
         var novasGalinhas = [];
-        for(var i=0;i<10;i++){
-            novasGalinhas.push(this.populacaoGalinha[i]);
+        var i=0;
+        for(var populacaoGalinhaLocal of this.populacaoGalinha){
+            if(populacaoGalinhaLocal.deadI==20){
+                novasGalinhas.push(populacaoGalinhaLocal);
+                i++;
+            }
+            if(i>20){
+                break;
+            }
         }
         this.auxCrossing(novasGalinhas);
     }
