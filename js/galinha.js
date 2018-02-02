@@ -22,6 +22,8 @@ class Galinha{
     */
     
     constructor(ctx,position,positions){
+        this.img=new Image();
+        this.img.src="./img/galinha.png";
         this.cor        = "#FF0000";  
         this.deadI     = 20;
         this.dead      = false;
@@ -41,8 +43,11 @@ class Galinha{
     */
 
     draw(){
-        this.ctx.fillStyle=this.cor;
-        this.ctx.fillRect(this.position.x,this.position.y,25,25);
+        // this.ctx.fillStyle=this.cor;
+
+        this.ctx.drawImage(this.img,this.position.x,this.position.y,25,25);
+
+        // this.ctx.fillRect(this.position.x,this.position.y,25,25);
     }
 
     /**
@@ -108,7 +113,7 @@ class Galinha{
     */
 
     deadLoad(i){
-        this.deadI = i;
+        this.deadI = i-1;
         this.dead  = true;
         this.cor    = "#00FF00";
     }

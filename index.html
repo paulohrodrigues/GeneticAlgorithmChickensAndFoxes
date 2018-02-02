@@ -7,22 +7,41 @@
     <title>Genetico</title>
 </head>
 <body>
-    <canvas id="canvas" height="500" width="500"></canvas>
-    <script>
-        
-        
-        var canvas = document.getElementById("canvas");
-        var ctx    = canvas.getContext("2d");
 
-    
-        onload=()=>{
+    <style>
+        #grafico{
+            width: 400px;
+            position: absolute;
+            top: 0px;
+            right: 10px;
+        }
+    </style>
+
+
+
+    <canvas id="canvas" height="500" width="500" style="border:1px solid #000000;"></canvas>
+    <div id="grafico">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+
+    <script>  
+
+        var ctx     = document.getElementById("canvas").getContext("2d");
+        onload=(()=>{
             var g = new Genetico(ctx);
             g.play();        
-        }
+        });
 
     </script>
+
+
     <script src="./js/galinha.js"></script>
+    <script src="./js/grafico.js"></script>
     <script src="./js/genetico.js"></script>
     <script src="./js/raposa.js"></script>
+    <script src="./lib/node_modules/chart.js/dist/Chart.min.js"></script>
+
+
 </body>
 </html>

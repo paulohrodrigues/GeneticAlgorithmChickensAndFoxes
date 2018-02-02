@@ -16,11 +16,13 @@ class Genetico{
     */
 
     constructor(ctx){
+        this.geracao=1;
         this.i=0;
         this.ctx=ctx;
         this.populacaoGalinha=[];
         this.raposas = new Raposa(ctx);
         this.init();
+        this.grafico = new Grafico();;
     }
 
 
@@ -33,12 +35,12 @@ class Genetico{
 
     init(){
         var possible = "lrdu";
-        for(let i =0;i<20;i++){
+        for(let i =0;i<50;i++){
             var positions = [];
             for(let j =0;j<20;j++){
                 positions.push(possible[Math.floor((Math.random() * 4))]);
             }
-            this.populacaoGalinha.push(new Galinha(this.ctx,{"x":250,"y":250},positions));
+            this.populacaoGalinha.push(new Galinha(this.ctx,{"x":100,"y":100},positions));
         }
     }
 
@@ -88,6 +90,9 @@ class Genetico{
     }
 
 
+
+
+
     /**
     * Método que separa os indivíduos mais qualificados para o cruzamento
     *
@@ -96,6 +101,7 @@ class Genetico{
     */
 
     crossing(){
+        this.updateGrafico();
         this.populacaoGalinha = this.populacaoGalinha.sort(function(a,b) {
             return a.morteI > b.morteI ? -1 : a.morteI < b.morteI ? 1 : 0;
         });
@@ -112,6 +118,24 @@ class Genetico{
         }
         this.auxCrossing(novasGalinhas);
     }
+
+
+    /**
+    * Método que faz a atualização do grafico
+    *
+    * @method updateGrafico
+    * @return {any} Sem retorno
+    */
+    updateGrafico(){
+        var soma =0;
+        for(var galinha of this.populacaoGalinha){
+            soma+=galinha.deadI;
+        }
+
+        this.grafico.update("Geração "+this.geracao,soma/this.populacaoGalinha.length);
+        this.geracao++;
+    }
+
 
     /**
     * Método que faz a preparação do cruzamento dos indivíduos mais qualificados
@@ -151,7 +175,7 @@ class Genetico{
             positions.push(galinha2.positions[j]);
         }
 
-        this.populacaoGalinha.push(new Galinha(this.ctx,{"x":250,"y":250},positions));
+        this.populacaoGalinha.push(new Galinha(this.ctx,{"x":100,"y":100},positions));
     }
 
 }
