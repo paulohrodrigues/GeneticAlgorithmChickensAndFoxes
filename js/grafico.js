@@ -20,7 +20,7 @@ class Grafico{
             data: {
                 labels: this.x,
                 datasets: [{
-                    label: 'Evolução Média',
+                    label: 'Número de Passos médio',
                     data: this.y,
                     borderWidth: 1
                 }]

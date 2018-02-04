@@ -96,7 +96,7 @@ class Genetico{
             }
 
             self.i++;
-            if(self.i>=30){
+            if(self.i>=20){
                 
                 self.crossing();
                 // alert("Nova Geração");
