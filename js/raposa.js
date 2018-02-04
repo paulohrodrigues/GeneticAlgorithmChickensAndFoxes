@@ -19,11 +19,10 @@ class Raposa{
         this.img.src="./img/raposa.png";
         this.ctx=ctx;
         this.positions=[];
-        for(var j =0; j<=100;j++){
+        for(var j =0; j<parseInt(document.getElementById("raposas").value);j++){
             this.positions.push({"x":Math.floor((Math.random() * 21))*25,"y":Math.floor((Math.random() * 21))*25});
         }
     }
-
 
     /**
     * Desenha todas as "Raposas" na tela

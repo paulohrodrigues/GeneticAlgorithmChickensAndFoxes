@@ -20,7 +20,7 @@ class Grafico{
             data: {
                 labels: this.x,
                 datasets: [{
-                    label: 'Indivíduos com evolução de passos máximo',
+                    label: 'Evolução Média',
                     data: this.y,
                     borderWidth: 1
                 }]

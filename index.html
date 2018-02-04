@@ -10,19 +10,24 @@
 
     <style>
         #grafico{
-            width: 400px;
+            width: 600px;
             position: absolute;
             top: 0px;
-            right: 10px;
+            right: 30px;
         }
     </style>
 
-
-
-    <canvas id="canvas" height="500" width="500" style="border:1px solid #000000;"></canvas>
+    Geração:<span id="geracao"></span><br>
+    Raposas: <input type="text" value="100" id="raposas"><br>
+    Galinhas: <input type="text" value="500" id="galinhas"><br>
+    Velocidade em Milissegundos: <input type="text" value="300" id="velocidade"><br>
+    <!-- Passos Máximos: <input type="text" id="passos"><br> -->
+    <button id="play">Iniciar</button> <button id="reset">Zerar</button><br>
     <div id="grafico">
         <canvas id="myChart" width="400" height="400"></canvas>
     </div>
+    <canvas id="canvas" height="500" width="500" style="border:1px solid #000000;"></canvas>
+
 
 
     <script>  
@@ -30,7 +35,18 @@
         var ctx     = document.getElementById("canvas").getContext("2d");
         onload=(()=>{
             var g = new Genetico(ctx);
-            g.play();        
+            document.getElementById("play").addEventListener("click",()=>{
+                
+                document.getElementById("raposas").disabled = true;
+                document.getElementById("galinhas").disabled = true;
+                document.getElementById("velocidade").disabled = true;
+                // document.getElementById("passos").disabled = true;
+
+                g.play();     
+            });
+            document.getElementById("reset").addEventListener("click",()=>{
+                window.location.href = "index.html";   
+            });
         });
 
     </script>

@@ -61,7 +61,7 @@ class Galinha{
 
     translate(speed,i){
         if(this.dead==true){
-            console.log("morto");
+            // console.log("morto");
         }else{
             switch(this.positions[i]){
                 case "l":{
@@ -113,9 +113,11 @@ class Galinha{
     */
 
     deadLoad(i){
+
         this.deadI = i-1;
         this.dead  = true;
         this.cor    = "#00FF00";
+        console.log("Morreu com "+this.deadI+" de movimentação");
     }
 
 
