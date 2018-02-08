@@ -150,10 +150,17 @@ class Genetico{
 
     auxCrossing(novasGalinhas){
         this.populacaoGalinha=[];
-        for(var galinha1 of novasGalinhas){
+        for(let galinha1 of novasGalinhas){
             console.log("Apta a cruzar com "+galinha1.deadI);
-            for(var galinha2 of novasGalinhas){
+            for(let galinha2 of novasGalinhas){
                 this.joinCrossing(galinha1,galinha2);
+            }
+        }
+        var max = Math.ceil(this.populacaoGalinha.length*0.1);
+        for(let i=0;i<max;i++){
+            // console.log("Apta a cruzar com "+galinha1.deadI);
+            for(let j=0;j<max;j++){
+                this.joinCrossing(this.populacaoGalinha[i],this.populacaoGalinha[j]);
             }
         }
         this.sizeDead=0;
