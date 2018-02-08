@@ -17,6 +17,8 @@ Tais características são representadas por 4 letras possíveis em uma lista(ar
 <p> Formato exemplo: [ "l", "l", "r", "d", "l", "u", "u", "u", "l", "l", "d", "r", "d", "l", "r", "r", "r", "l", "d","d"]</p>
 
 <p>Depois de iniciar a população de galinhas, elas irão caminhar pelo cenário e quando completarem os 20 passos então serão avaliadas e realocadas para a próxima etapa.</p>
-<p>Agora nessa nova etapa é necessário cruzar as galinhas que passaram na avaliação, caso tenha tido alguma morte na etapa anterior então o cruzamento é feito com algumas mutações, caso contrario o cruzamento é feito meio a meio, com metade das características herdadas do "Pai" e a outra metade da "Mãe", para manter a população perfeita intacta. Caso haja clonagem os mesmo são removidos.</p>
+<p>Agora nessa nova etapa é necessário cruzar as galinhas que passaram na avaliação, caso tenha tido alguma morte na etapa anterior então o cruzamento é feito com algumas mutações, caso contrário o cruzamento é feito meio a meio, com metade das características herdadas do "Pai" e a outra metade da "Mãe", para manter a população perfeita intacta. Caso haja clonagem os mesmo são removidos.</p>
 
 <p>Finalizado a etapa de cruzamento, as novas galinhas juntamente com seus pais são novamente soltas no senário e reavaliadas, isso tudo vai se repetir até que toda população tenha características aceitáveis para serem consideradas evoluídas.</p>
+<br>
+OBSERVAÇÕES: A escala para medir o desempenho dos indivíduos vai de 0 a 20 (Aplicação do conceito de ordem de grandeza). E o acompanhamento gráfico é feito com a media geral dos resultados obtidos.
